@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  customtoken:'f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0',
+  baseUrl:   'https://p25.gowebbidemo.com/public/api/v1/',
+  
 };
 
 /*
