@@ -122,6 +122,10 @@ const routes: Routes = [
     path: 'orderlist',
     loadChildren: () => import('./orderlist/orderlist.module').then( m => m.OrderlistPageModule)
   },
+  {
+    path: 'rating-review',
+    loadChildren: () => import('./rating-review/rating-review.module').then( m => m.RatingReviewPageModule)
+  },
   
   
 ];

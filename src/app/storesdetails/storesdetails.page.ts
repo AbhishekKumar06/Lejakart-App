@@ -23,6 +23,7 @@ export class StoresdetailsPage implements OnInit {
   userdetail: any = {};
   products: any = [];
   Pageload = true;
+  
 
   constructor(public modalController: ModalController, public helper: HelperserviceService, public api: ApiserviceService, public router: Router, public nav: NavigationService) { }
 
@@ -53,6 +54,10 @@ export class StoresdetailsPage implements OnInit {
       // this.StoreProduct('Fruits');
     }
     console.log("storeid", this.storeid);
+    this.api.store_id = this.storeid;
+    console.log("store_id",this.api.store_id);
+    
+
 
   }
 
@@ -66,6 +71,8 @@ export class StoresdetailsPage implements OnInit {
       console.log(resp);
       if (resp.status == "success") {
         this.category = resp.data.category_array;
+      
+        
         if (this.category) {
           this.type = this.category[0];
           this.StoreProduct(this.type);

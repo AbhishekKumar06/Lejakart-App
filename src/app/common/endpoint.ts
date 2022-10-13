@@ -1,3 +1,5 @@
+import { saveConfig } from "@ionic/core";
+
 export const endpoints = {
     Productcategory(): string {
         return 'categories';
@@ -97,6 +99,14 @@ export const endpoints = {
 
     Exclude_Delivery_Charges(pick_up): string {
         return 'exclude-delivery-charge/' + pick_up
+    },
+
+    Rating_Review_save():  string{
+        return 'save-store-rating'
+    },
+
+    Fetch_Rating(): string{
+        return 'get-store-review'
     }
 
 

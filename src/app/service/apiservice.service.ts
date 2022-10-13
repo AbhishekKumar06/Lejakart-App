@@ -13,6 +13,7 @@ export class ApiserviceService {
   name:any='';
   email:any='';
   location:any='';
+  store_id:any='';
  
 
   constructor(public http: HttpClient) { }
