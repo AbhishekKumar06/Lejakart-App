@@ -105,8 +105,8 @@ export const endpoints = {
         return 'save-store-rating'
     },
 
-    Fetch_Rating(): string{
-        return 'get-store-review'
+    Fetch_Rating(store_id): string{
+        return 'get-store-review/' + store_id
     }
 
 

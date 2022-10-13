@@ -19,6 +19,15 @@ export class HelperserviceService {
     });
     toast.present();
   }
+  async SuccessToast(msg) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 3000,
+      color : 'success',
+      position: 'top'
+    });
+    toast.present();
+  }
   async showLoading() {
     this.isLoading = true;
     return await this.loadingCtrl.create({
