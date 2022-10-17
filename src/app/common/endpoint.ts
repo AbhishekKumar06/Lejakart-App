@@ -107,6 +107,17 @@ export const endpoints = {
 
     Fetch_Rating(store_id): string{
         return 'get-store-review/' + store_id
+    },
+    Save_Card(): string{
+        return 'save-card'
+    },
+
+    Get_Card() : string{
+        return 'get-cards'
+    },
+
+    Del_Card(Card_id): string{
+        return 'delete-card/' + Card_id
     }
 
 

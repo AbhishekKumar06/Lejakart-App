@@ -15,10 +15,10 @@
     <div class="flex">
       Cash/Card on delivery <ion-icon name="checkmark-outline"></ion-icon>
     </div>
-      <ion-item class="ion-no-padding">
+      <ion-item class="ion-no-padding" *ngFor="let card of Card_Detail">
         <img src="assets/icon/visa.png" loading="lazy" alt=""/>
-         <ion-input placeholder="**** **** ****"></ion-input>
-        <ion-button shape="round" slot="end">Delete Card</ion-button>
+         <ion-input >{{card.card_no}}</ion-input>
+        <ion-button shape="round" slot="end" (click)="Delete_Card(card.id)">Delete Card</ion-button>
       </ion-item>
       <h4>Other Methods</h4>
     </div>

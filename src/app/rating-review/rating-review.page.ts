@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicRatingModule } from 'ionic-rating';
 import { endpoints } from '../common/endpoint';
 import { ApiserviceService } from '../service/apiservice.service';
 import { HelperserviceService } from '../service/helperservice.service';
+import { NavigationExtras } from '@angular/router';
+import { NavigationService } from '../service/navigation.service';
+
 
 @Component({
   selector: 'app-rating-review',
@@ -17,7 +21,10 @@ export class RatingReviewPage implements OnInit {
 
   constructor(public rating: IonicRatingModule,
     public api: ApiserviceService,
-    public helper: HelperserviceService) { }
+    public helper: HelperserviceService,
+    public router: Router,
+    public nav: NavigationService
+  ) { }
 
   ngOnInit() {
     console.log("store_id", this.api.store_id);
@@ -32,44 +39,49 @@ export class RatingReviewPage implements OnInit {
   }
 
   Rating_Review() {
+
     this.helper.showLoading();
     this.api.post(endpoints.Rating_Review_save(), {
       store_id: this.api.store_id,
       ratings: this.rate,
       review: this.comment,
-   
+
     }).subscribe((resp: any) => {
 
       console.log(resp);
 
-      if (resp.status == 'Success') {
+      if (resp.status == "Success") {
         this.helper.hideLoading();
         this.rate = '';
         this.comment = '';
-        this.Fetch_Rating();
+        this.Fetch_store_Rating();
         this.helper.SuccessToast(resp.msg);
       }
-      else{
+      else {
         this.helper.hideLoading();
-        this.rate= '';
-        this.comment=''; 
-         this.helper.presentToast(resp.msg.ratings[0]);  
+        this.rate = '';
+        this.comment = '';
+        this.helper.presentToast(resp.msg.ratings[0]);
       }
-    }, error=>{
+    }, error => {
       this.helper.hideLoading();
-     
-      
-    });
+   });
+
   }
 
   Fetch_store_Rating() {
     this.helper.showLoading();
-    this.api.get(endpoints.Fetch_Rating(this.api.store_id)).subscribe((resp: any) => {
-      console.log(resp);
-      this.Fetch_Rating = resp.data.reviews;
-      this.helper.hideLoading();
+    if (localStorage.getItem('User_Id')) {
+      this.api.get(endpoints.Fetch_Rating(this.api.store_id)).subscribe((resp: any) => {
+        console.log(resp);
+        this.Fetch_Rating = resp.data.reviews;
+        this.helper.hideLoading();
 
-    });
+      });
+    } else {
+      this.router.navigate(['/login']);
+      this.helper.hideLoading();
+    }
 
   }
 

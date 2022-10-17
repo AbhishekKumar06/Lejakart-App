@@ -14,25 +14,25 @@
     <div class="form-part">
       <ion-list>
         <ion-item class="ion-no-padding" lines="none">
-          <ion-input type="number" placeholder="Card Number"></ion-input>
+          <ion-input type="number" [(ngModel)]="card_number" placeholder="Card Number"></ion-input>
         </ion-item>
         <div class="flex">
           <p>Expired Date</p>
           <ion-item class="ion-no-padding" lines="none">
-            <ion-input type="New Password" placeholder="MM"></ion-input>
+            <ion-input type="New Password" [(ngModel)]="exp_month" placeholder="MM"></ion-input>
           </ion-item>
           <ion-item class="ion-no-padding" lines="none">
-            <ion-input type="New Password" placeholder="YY"></ion-input>
+            <ion-input type="New Password" [(ngModel)]="exp_year" placeholder="YY"></ion-input>
           </ion-item>
         </div>
         <ion-item class="ion-no-padding" lines="none">
-          <ion-input type="New Password" placeholder="CVV"></ion-input>
+          <ion-input type="New Password" [(ngModel)]="cvv" placeholder="CVV"></ion-input>
         </ion-item>
         <ion-item class="ion-no-padding" lines="none">
-          <ion-input type="name" placeholder="First Name"></ion-input>
+          <ion-input type="name" [(ngModel)]="first_name" placeholder="First Name"></ion-input>
         </ion-item>
         <ion-item class="ion-no-padding" lines="none">
-          <ion-input type="name" placeholder="Last Name"></ion-input>
+          <ion-input type="name" [(ngModel)]="last_name" placeholder="Last Name"></ion-input>
         </ion-item>
         <div class="flex">
           <p>You can remove this card at anytime</p>
@@ -43,7 +43,7 @@
   </div>
 </ion-content>
 <ion-footer mode="md">
-  <ion-button shape="round" (click)="closeModal()">
+  <ion-button shape="round" (click)="Save_Card_Detail()">
     <ion-icon name="add-outline"></ion-icon>
     Add Card
   </ion-button>
