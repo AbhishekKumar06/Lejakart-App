@@ -51,8 +51,8 @@
             </span>
         </p>
         <div class="rate-individual"  *ngFor="let data of Fetch_Rating ">
-            <h6><span>C</span></h6>
-            <small></small>
+            <h6><span>C</span>{{data.user_details.name}}</h6>
+            <small>{{data.review_date}}</small>
             <p class="rating">
                 <span>
                

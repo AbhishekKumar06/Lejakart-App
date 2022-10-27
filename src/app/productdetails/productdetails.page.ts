@@ -35,6 +35,7 @@ export class ProductdetailsPage implements OnInit {
       this.Productdetail();
     }
     console.log("product_id", this.Product_id);
+    this.api.product_id = this.Product_id;
   }
   Productdetail() {
      this.helper.showLoading();

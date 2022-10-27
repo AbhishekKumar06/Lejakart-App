@@ -101,23 +101,30 @@ export const endpoints = {
         return 'exclude-delivery-charge/' + pick_up
     },
 
-    Rating_Review_save():  string{
+    Rating_Review_save(): string {
         return 'save-store-rating'
     },
 
-    Fetch_Rating(store_id): string{
+    Fetch_Rating(store_id): string {
         return 'get-store-review/' + store_id
     },
-    Save_Card(): string{
+    Save_Card(): string {
         return 'save-card'
     },
 
-    Get_Card() : string{
+    Get_Card(): string {
         return 'get-cards'
     },
 
-    Del_Card(Card_id): string{
+    Del_Card(Card_id): string {
         return 'delete-card/' + Card_id
+    },
+
+    Product_Review(): string {
+        return 'save-product-review'
+    },
+    Fetch_prod__Review(prod_id): string {
+        return 'get-product-review/' + prod_id
     }
 
 

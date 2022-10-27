@@ -17,7 +17,9 @@ export class PaymentdetailPage implements OnInit {
     public modalController: ModalController,
     public api: ApiserviceService,
     public helper: HelperserviceService
-  ) { this.Get_Cards(); }
+  ) { 
+    this.Get_Cards(); 
+  }
 
   ngOnInit() {}
 
@@ -48,7 +50,7 @@ export class PaymentdetailPage implements OnInit {
 
     }, error => {
       console.log(error);
-      this.helper.hideLoading();
+      this.helper.hideLoading();                                                                
     });
   }
 
@@ -64,7 +66,9 @@ export class PaymentdetailPage implements OnInit {
           this.helper.hideLoading();
         }
        },error=>{
-        this.helper.hideLoading();
+        console.log(error);
+        
+        this.helper.hideLoading();  
        });
   }
 

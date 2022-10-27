@@ -221,6 +221,43 @@ ion-content {
       }
     }
   }
+  .review-part{
+    width: 100%;
+    position: relative;
+    padding: 0 16px;
+    h4{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 15px;
+      text-transform: capitalize;
+      span{
+        font-size: 14px;
+        text-transform: capitalize;
+        box-shadow: #a9a9a999 1px 1px 1px;
+      }
+    }
+    .ratings-part{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      ion-button{
+        --background: rgb(0, 140, 0);
+        color: #fff;
+        font-size: 14px;
+        text-transform: capitalize;
+        --border-radius: 8px;
+        ion-icon{
+          font-size: 14px;
+          margin-left: 6px;
+        }
+      }
+      p{
+        color: rgb(135, 135, 135);
+        font-size: 14px;
+      }
+    }
+  }
 
   // .similar-products-area {
   //   background-color: #F9F9F9;

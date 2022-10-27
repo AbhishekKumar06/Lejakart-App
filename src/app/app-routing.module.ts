@@ -126,6 +126,10 @@ const routes: Routes = [
     path: 'rating-review',
     loadChildren: () => import('./rating-review/rating-review.module').then( m => m.RatingReviewPageModule)
   },
+  {
+    path: 'rateproduct',
+    loadChildren: () => import('./rateproduct/rateproduct.module').then( m => m.RateproductPageModule)
+  },
   
   
 ];

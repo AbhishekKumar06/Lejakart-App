@@ -71,12 +71,19 @@ export class RatingReviewPage implements OnInit {
 
   Fetch_store_Rating() {
     this.helper.showLoading();
-    if (localStorage.getItem('User_Id')) {
+    this.api.user_id = localStorage.getItem('User_Id');
+    if (this.api.user_id) {
       this.api.get(endpoints.Fetch_Rating(this.api.store_id)).subscribe((resp: any) => {
         console.log(resp);
         this.Fetch_Rating = resp.data.reviews;
         this.helper.hideLoading();
 
+      },error=>{
+        console.log(error);
+        this.helper.presentToast("something went wrong");
+        this.helper.hideLoading();
+
+        
       });
     } else {
       this.router.navigate(['/login']);
@@ -84,9 +91,5 @@ export class RatingReviewPage implements OnInit {
     }
 
   }
-
-
-
-
 
 }
