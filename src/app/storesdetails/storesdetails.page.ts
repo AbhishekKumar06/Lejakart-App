@@ -23,6 +23,7 @@ export class StoresdetailsPage implements OnInit {
   userdetail: any = {};
   products: any = [];
   Pageload = true;
+  Rating_review:object={};
   
 
   constructor(public modalController: ModalController, public helper: HelperserviceService, public api: ApiserviceService, public router: Router, public nav: NavigationService) { }
@@ -81,6 +82,7 @@ export class StoresdetailsPage implements OnInit {
         this.store = resp.data.store.subcategory;
         this.storedetail = resp.data.store;
         this.userdetail = resp.data.store.user_details;
+        this.Rating_review = resp.data;
         console.log(this.store);
         this.helper.hideLoading();
         this.Pageload = false;

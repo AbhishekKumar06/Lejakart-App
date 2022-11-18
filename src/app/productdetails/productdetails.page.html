@@ -48,11 +48,11 @@
     <h4>Ratings & Reviews<span routerLink="/rateproduct">Rate Product</span></h4>
     <div class="ratings-part">
       <ion-button>
-        3.9
-        <ion-icon name="star"></ion-icon> 
+        {{Review_Rating.rating}}
+        <ion-icon name="star"></ion-icon>
       </ion-button>
       <p>
-        20,908 ratings and 1,637 reviews
+        {{Review_Rating.rating_review_count}} reviews
       </p>
     </div>
   </div>
@@ -66,15 +66,15 @@
   </div>
   <div class="middle">
     <span>Similar Products</span>
-  </div>  
+  </div>
   <div class="top">
     <div class="product1">
       <ion-row>
-        <ion-col size="6" *ngFor="let product of Similar_Products" (click)="go_detail(product)">  
+        <ion-col size="6" *ngFor="let product of Similar_Products" (click)="go_detail(product)">
           <div class="products-wrapper">
-        
+
             <!-- <span>50% Discount</span> -->
-            <div class="product-inner"  >
+            <div class="product-inner">
               <div class="product-pic">
                 <img [src]="product.image_array[0]">
               </div>
@@ -96,7 +96,7 @@
               <div class="rating-area">
                 <ul>
                   <li>
-                    4.5
+                    {{product.rating}}
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -106,15 +106,15 @@
                     </svg>
                   </li>
                   <li>
-                    (100 Reviews)
+                    ({{product.rating_review_count}} Reviews)
                   </li>
                 </ul>
               </div>
-              
+
             </div>
-           </div>
+          </div>
         </ion-col>
-       
+
       </ion-row>
     </div>
   </div>

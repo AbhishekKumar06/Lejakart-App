@@ -19,13 +19,13 @@ export class ProductdetailsPage implements OnInit {
     spaceBetween: 8,
     slideShadows: true,
     autoplay: true,
-
   };
   Product_id: any = '';
   prod_details: any = [];
   // sliderimage:any=[];
   Pageload = true;
   Similar_Products: any = [];
+  Review_Rating: object = {};
 
   constructor(public helper: HelperserviceService, public api: ApiserviceService, public router: Router, public nav: NavigationService) { }
 
@@ -38,13 +38,14 @@ export class ProductdetailsPage implements OnInit {
     this.api.product_id = this.Product_id;
   }
   Productdetail() {
-     this.helper.showLoading();
+    this.helper.showLoading();
     this.api.get(endpoints.Prod_detail(this.Product_id)).subscribe((resp: any) => {
       console.log(resp);
       if (resp.status == "success") {
         this.prod_details = resp.data.products_details;
         this.Similar_Products = resp.data.similar_product;
-        console.log("similar_product",this.Similar_Products);
+        this.Review_Rating = resp.data;
+        console.log("similar_product", this.Similar_Products);
         this.helper.hideLoading();
         this.Pageload = false;
       }
@@ -58,9 +59,9 @@ export class ProductdetailsPage implements OnInit {
   }
 
   AddCart() {
-    this.api.user_id= localStorage.getItem('User_Id');
+    this.api.user_id = localStorage.getItem('User_Id');
     this.helper.showLoading();
-    if ( !this.api.user_id) {
+    if (!this.api.user_id) {
       const navigationExtras: NavigationExtras = {
         state: {
           from: 'ProductdetailPage',
@@ -77,7 +78,7 @@ export class ProductdetailsPage implements OnInit {
         console.log(resp);
         if (resp.status == 'success') {
           this.helper.hideLoading();
-          this.helper.presentToast(resp.msg);
+          this.helper.SuccessToast(resp.msg);
           this.Pageload = false;
 
         }
@@ -87,9 +88,9 @@ export class ProductdetailsPage implements OnInit {
         }
       },
         error => {
-        if(error){
-          this.helper.hideLoading();
-        }
+          if (error) {
+            this.helper.hideLoading();
+          }
 
         });
     }
@@ -97,9 +98,9 @@ export class ProductdetailsPage implements OnInit {
   }
   go_detail(prodId) {
 
-    this.prod_details  = prodId;  
-    console.log("product_detail",this.prod_details);   
-    
+    this.prod_details = prodId;
+    console.log("product_detail", this.prod_details);
+
   }
 
 

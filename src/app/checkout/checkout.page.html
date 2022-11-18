@@ -107,21 +107,21 @@
     <div class="inner-area" *ngIf="DeliveryMethod ==='delivery_at_address'">
       <div class="left-area">
         <span>
-          delivery charge
+          SGST
         </span>
       </div>
       <p >
-        ₹{{Price.delivery_charge}}
+        ₹{{Price.product_sgst_amount}} 
       </p>
     </div>
     <div class="inner-area underline">
       <div class="left-area">
         <span>
-          SGST
+         Delivery Charge
         </span>
       </div>
       <p >
-        ₹{{Price.product_sgst_amount}}
+         ₹{{Price.delivery_charge}}
       </p>
     </div>
     <div class="grand-total-area">

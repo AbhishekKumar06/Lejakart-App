@@ -72,7 +72,7 @@ export class LoginPage implements OnInit {
           this.api.name = localStorage.getItem('name');
           this.api.email = localStorage.getItem('email');
           console.log("user_id", this.api.user_id);
-          this.helper.presentToast(resp.msg);
+          this.helper.SuccessToast(resp.msg);
           this.router.navigateByUrl('tabs/home');
           this.email = "";
           this.pwd = "";

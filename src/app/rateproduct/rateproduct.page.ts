@@ -32,7 +32,7 @@ export class RateproductPage implements OnInit {
 
     this.helper.showLoading();
     this.api.post(endpoints.Product_Review(), {
-      product_id: this.api.product_id,   
+      product_id: this.api.product_id,
       ratings: this.rate,
       review: this.comment
 
@@ -44,11 +44,13 @@ export class RateproductPage implements OnInit {
         this.helper.SuccessToast(resp.msg);
         this.helper.hideLoading();
       } else {
-
-        if (resp.msg.ratings) {
-          this.helper.presentToast(resp.msg?.ratings[0]);
-        } else if (resp.msg.review) {
-          this.helper.presentToast(resp.msg?.review[0]);    
+        this.rate = '';
+        this.comment = '';
+        this.helper.presentToast(resp.msg);
+        if (resp.msg?.ratings) {
+          this.helper.presentToast(resp.msg.ratings[0]);
+        } else if (resp.msg?.review) {
+          this.helper.presentToast(resp.msg.review[0]);
         }
         this.helper.hideLoading();
       }
@@ -70,31 +72,31 @@ export class RateproductPage implements OnInit {
 
     this.helper.showLoading();
     this.api.user_id = localStorage.getItem('User_Id');
-    if(this.api.user_id){
-    this.api.get(endpoints.Fetch_prod__Review(this.api.product_id)).subscribe((resp: any) => {
-      console.log(resp);
-      if(resp.status == "Success"){
-        this.Fetch_Review= resp.data.reviews;
+    if (this.api.user_id) {
+      this.api.get(endpoints.Fetch_prod__Review(this.api.product_id)).subscribe((resp: any) => {
+        console.log(resp);
+        if (resp.status == "success") {
+          this.Fetch_Review = resp.data.reviews;
 
-        this.helper.hideLoading();
+          this.helper.hideLoading();
 
-      }else{
-        this.helper.hideLoading();
-      }
+        } else {
+          this.helper.hideLoading();
 
+        }
+      },
+        error => {
+          console.log(error);
+          this.helper.hideLoading();
+          this.helper.presentToast("something went wrong");
 
-    },error=>{
-      console.log(error);
+        });
+    } else {
+      this.router.navigate(['/login']);
       this.helper.hideLoading();
-      this.helper.presentToast("something went wrong");
-      
-    });
-  }else{
-    this.router.navigate(['/login']);
-    this.helper.hideLoading();
 
-  }
-  
+    }
+
   }
 
 }
