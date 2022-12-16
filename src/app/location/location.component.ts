@@ -57,7 +57,7 @@ export class LocationComponent implements OnInit {
     // this.modalCtrl.dismiss();
     this.modalCtrl.dismiss().then((data) => {
       data = this.location
-      console.log(data);
+      console.log("Current_Address",data);
 
     });
   }

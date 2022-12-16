@@ -88,7 +88,4 @@ export class OrdersdetailsPage implements OnInit {
     });
   }
 
-
-
-
 }

@@ -31,7 +31,7 @@
         <h2>{{Products.title}}</h2>
         <p [innerHTML]="Products.description"></p>
         <div class="seller-area">
-          <p>₹ {{OrderDetail.total_price}}.00 <span class="product">Quantity :{{OrderDetail.quantity}}</span></p>
+          <p>₹ {{OrderDetail.total_price}}<span class="product">Quantity :{{OrderDetail.quantity}}</span></p>
         </div>
       </div>
     </div>
@@ -82,26 +82,26 @@
       <h2>
         CGST
         <p>
-          ₹ {{OrderDetail.product_cgst_amount}}.00
+          ₹ {{OrderDetail.product_cgst_amount}}
         </p>
       </h2>
       <h2 *ngIf="Orders.delivery_method==='delivery_at_address'">
         Delivery Charge
         <p>
-          ₹ {{OrderDetail.delivery_charge}}.00
+          ₹ {{OrderDetail.delivery_charge}}
         </p>
       </h2>
       <h2>
         SGST
         <p>
-          ₹ {{OrderDetail.product_sgst_amount}}.00
+          ₹ {{OrderDetail.product_sgst_amount}}
         </p>
       </h2>
     </div>
     <div class="total-price-area">
       <h3>
         total-price-area<span>
-          ₹ {{OrderDetail.total_price}}.00
+          ₹ {{OrderDetail.total_price}}
         </span>
       </h3>
     </div>

@@ -125,6 +125,7 @@ export class HomePage implements OnInit {
 
   go_productlist(data) {
     const navigationExtras: NavigationExtras = {
+      
       state: {
         product: data,
       }

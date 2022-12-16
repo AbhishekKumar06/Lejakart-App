@@ -34,6 +34,7 @@ export class AddaddressPage implements OnInit {
     this.modalCtrl.dismiss();
   }
   Address() {
+
     if (this.FullName == '') {
       this.helper.presentToast('Please Enter FullName');
     }
@@ -50,7 +51,7 @@ export class AddaddressPage implements OnInit {
       this.helper.presentToast('Please Enter City');
     }
     else if (this.Area == '') {
-       this.helper.presentToast('Please Enter Area');
+      this.helper.presentToast('Please Enter Area');
     }
     else if (this.Flat == '') {
       this.helper.presentToast('Please Enter Flat');
@@ -78,13 +79,18 @@ export class AddaddressPage implements OnInit {
         console.log(resp);
         if (resp.status == "success") {
           this.helper.hideLoading();
-          this.helper.presentToast(resp.msg);
+          this.helper.SuccessToast(resp.msg);
           this.closeModal();
         }
         else {
           this.helper.hideLoading();
           this.helper.presentToast(resp.msg);
           this.closeModal();
+        }
+      }, error => {
+        if (error) {
+          this.helper.hideLoading();
+          this.helper.presentToast(error.message);
         }
       });
     }

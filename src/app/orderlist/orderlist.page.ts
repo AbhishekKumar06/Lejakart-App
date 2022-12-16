@@ -27,8 +27,9 @@ export class OrderlistPage implements OnInit {
   ngOnInit() {
     this.Orderlist();
   }
+
   Orderlist() {
-    
+
     this.api.user_id = localStorage.getItem('User_Id');
     this.helper.showLoading();
     if (this.api.user_id) {
