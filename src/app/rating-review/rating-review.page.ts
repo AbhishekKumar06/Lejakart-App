@@ -50,18 +50,23 @@ export class RatingReviewPage implements OnInit {
 
       console.log(resp);
 
-      if (resp.status == "Success") {
-        this.helper.hideLoading();
+      if (resp.status == "success") {
         this.rate = '';
         this.comment = '';
         this.Fetch_store_Rating();
         this.helper.SuccessToast(resp.msg);
+        this.helper.hideLoading();
       }
       else {
         this.helper.hideLoading();
         this.rate = '';
         this.comment = '';
-        this.helper.presentToast(resp.msg.ratings[0]);
+        this.helper.presentToast(resp.msg);
+        if (resp.msg?.ratings) {
+          this.helper.presentToast(resp.msg.ratings[0]);
+        } else if (resp.msg?.review) {
+          this.helper.presentToast(resp.msg.review[0]);
+        }
       }
     }, error => {
       this.helper.hideLoading();

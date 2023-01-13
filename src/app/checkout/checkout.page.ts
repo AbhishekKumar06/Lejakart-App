@@ -152,7 +152,7 @@ export class CheckoutPage implements OnInit {
           if (resp.status == 'success') {
             base.helper.hideLoading();
             this.router.navigate(['/orderlist']);
-            base.helper.presentToast(resp.msg);
+            base.helper.SuccessToast(resp.msg);
             console.log(base.DeliveryMethod);
 
           } else {
@@ -206,7 +206,7 @@ export class CheckoutPage implements OnInit {
             if (resp.status == 'success') {
               base.helper.hideLoading();
               this.router.navigate(['/orderlist']);
-              base.helper.presentToast(resp.msg);
+              base.helper.SuccessToast(resp.msg);
               console.log(base.DeliveryMethod);
             } else {
               base.helper.hideLoading();

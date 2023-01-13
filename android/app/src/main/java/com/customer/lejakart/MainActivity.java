@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.customer.lejakart;
 
 import com.getcapacitor.BridgeActivity;
 

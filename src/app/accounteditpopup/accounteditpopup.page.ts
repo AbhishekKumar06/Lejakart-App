@@ -63,7 +63,7 @@ export class AccounteditpopupPage implements OnInit {
         if (resp.status == "success") {
           this.helper.hideLoading();
           this.closeModal();
-          this.helper.presentToast(resp.msg);
+          this.helper.SuccessToast(resp.msg);
         } else {
           this.helper.hideLoading();
           this.closeModal();

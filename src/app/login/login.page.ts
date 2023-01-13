@@ -65,10 +65,10 @@ export class LoginPage implements OnInit {
         if (resp.status == "success") {
           this.helper.hideLoading();
           localStorage.setItem('quantamToken', resp.data.token);
-          localStorage.setItem('User_Id', resp.data.user.id);
           localStorage.setItem('name', resp.data.user.name);
           localStorage.setItem('email', resp.data.user.email);
-          this.api.user_id = resp.data.user.id;
+          localStorage.setItem('User_Id', resp.data.user.id);
+          this.api.user_id = localStorage.getItem('User_Id');
           this.api.name = localStorage.getItem('name');
           this.api.email = localStorage.getItem('email');
           console.log("user_id", this.api.user_id);

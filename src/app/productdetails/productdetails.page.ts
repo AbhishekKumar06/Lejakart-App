@@ -97,9 +97,13 @@ export class ProductdetailsPage implements OnInit {
 
   }
   go_detail(prodId) {
-
-    this.prod_details = prodId;
-    console.log("product_detail", this.prod_details);
+    this.api.user_id = localStorage.getItem('User_Id');
+    if (this.api.user_id) {
+      this.prod_details = prodId;
+      this.helper.SuccessToast("Product updated");
+    } else {
+      this.router.navigate(['/login']);
+    }
 
   }
 

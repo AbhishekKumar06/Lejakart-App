@@ -38,9 +38,10 @@ export class RateproductPage implements OnInit {
 
     }).subscribe((resp: any) => {
       console.log("resp", resp);
-      if (resp.status == 'Success') {
+      if (resp.status == 'success') {
         this.rate = '';
         this.comment = '';
+        this.Fetch_Product_Review();
         this.helper.SuccessToast(resp.msg);
         this.helper.hideLoading();
       } else {

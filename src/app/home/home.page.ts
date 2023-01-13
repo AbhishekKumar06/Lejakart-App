@@ -68,9 +68,6 @@ export class HomePage implements OnInit {
     this.Banner();
     this.api.name;
     console.log('name', this.api.name);
-
-
-
   }
   async presentModal() {
     const modal = await this.modalController.create({
@@ -78,7 +75,6 @@ export class HomePage implements OnInit {
       cssClass: 'location-modal',
       backdropDismiss: true,
     });
-
     return await modal.present();
   }
 
@@ -91,60 +87,52 @@ export class HomePage implements OnInit {
           if (e.category_image) {
             e.imgLoad = true;
           }
-
         })
-
         console.log(this.AllCategory);
       }
-
     }, error => {
-      console.error('err', error);
+      console.log('err', error);
     });
-
   }
   go_categorylist(id) {
     const navigationExtras: NavigationExtras = {
       state: {
         Id: id
-
-      }
-
+        }
     };
     this.nav.go('/categorylist', navigationExtras);
-
     console.log("category_id", id);
   }
+
   ProductList() {
     this.api.get(endpoints.HomeProduct()).subscribe((resp: any) => {
       console.log(resp);
       if (resp.status == "success") {
         this.Products = resp.data.all_products;
       }
+    },error=>{
+      console.log("error",error); 
     });
   }
 
   go_productlist(data) {
     const navigationExtras: NavigationExtras = {
-      
       state: {
         product: data,
       }
-
     };
     this.nav.go('/productlist', navigationExtras);
-
   }
+
   go_Productdetail(id) {
     const navigationExtras: NavigationExtras = {
       state: {
-
         product_id: id,
       }
-
     };
     this.nav.go('/productdetails', navigationExtras);
-
   }
+  
   Storelisting() {
     this.helper.showLoading();
     this.api.get(endpoints.store()).subscribe((resp: any) => {
@@ -160,7 +148,6 @@ export class HomePage implements OnInit {
       }
     }, error => {
       console.log(error);
-
       this.helper.hideLoading();
       this.pageload = false;
     });
@@ -169,10 +156,8 @@ export class HomePage implements OnInit {
   go_storedetail(storeid) {
     const navigationExtras: NavigationExtras = {
       state: {
-
         id: storeid,
       }
-
     };
     this.nav.go('/storesdetails', navigationExtras);
   }
@@ -191,13 +176,10 @@ export class HomePage implements OnInit {
             e.imgLoad = true;
           }
         })
-
       }
-
+    },error=>{
+      console.log("error",error.message);
     });
   }
- 
-
-
 }
 

@@ -11,13 +11,13 @@
   <div class="top">
     <ion-item lines="none" class="ion-no-padding">
       <ion-avatar>
-        <img src="assets/images/profile.png" loading="lazy" alt=""/>
+        <img [src]="selectedImage?.webPath" loading="lazy" alt=""/>
         <ion-button class="box">
-          <img src="assets/icon/cam.svg" loading="lazy" alt=""/>
+          <img src="assets/icon/cam.svg" loading="lazy" alt="" (click)="Get_Picture()"/>
         </ion-button>
       </ion-avatar>
       <ion-label>
-        <h4>{{api.name}}</h4>
+        <h4 *ngIf="api.user_id">{{api.name}}</h4>
       </ion-label>
     </ion-item>
   </div>

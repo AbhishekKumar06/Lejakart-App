@@ -15,6 +15,7 @@ export class ApiserviceService {
   location:any='';
   store_id:any='';
   product_id:any='';
+  image:any='';
  
 
   constructor(public http: HttpClient) { }

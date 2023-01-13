@@ -130,6 +130,10 @@ const routes: Routes = [
     path: 'rateproduct',
     loadChildren: () => import('./rateproduct/rateproduct.module').then( m => m.RateproductPageModule)
   },
+  {
+    path: 'contactus',
+    loadChildren: () => import('./contactus/contactus.module').then( m => m.ContactusPageModule)
+  },
   
   
 ];
