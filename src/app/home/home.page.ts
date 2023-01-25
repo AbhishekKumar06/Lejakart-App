@@ -51,6 +51,7 @@ export class HomePage implements OnInit {
   pageload = true;
   lazyloadGif: any = 'assets/images/loader.gif';
   roleMsg: string;
+  googleuser:any;
 
   constructor(public api: ApiserviceService,
     public router: Router,
@@ -62,13 +63,17 @@ export class HomePage implements OnInit {
 
   ) { }
   ngOnInit() {
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.googleuser = this.router.getCurrentNavigation().extras.state.user;
+    }
     this.Fetchcategory();
     this.ProductList();
     this.Storelisting();
     this.Banner();
     this.api.name;
     console.log('name', this.api.name);
-  }
+    console.log("googleuser======>",this.googleuser);
+    }
   async presentModal() {
     const modal = await this.modalController.create({
       component: LocationComponent,

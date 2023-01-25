@@ -22,7 +22,6 @@ Subcat_list:any=[];
       this.Subcategories();
         }
     console.log("category_id",this.Category_id);
-   
   }
   Subcategories(){
      this.helper.showLoading();
@@ -31,16 +30,16 @@ Subcat_list:any=[];
       if(resp.status == "success"){
         this.Subcat_list=resp.data.sub_category;
         this.helper.hideLoading();
+        if(this.Subcat_list.length < 1){
+          this.helper.presentToast('subcategory is empty!');
+        }
       }
       else{
          this.helper.hideLoading();
       }
-     
         }, error=> {
-        
           this.helper.hideLoading();
           console.log(error);
-          
           });
   }
   go_productlist(cat_id,subcat_id){
@@ -48,12 +47,8 @@ Subcat_list:any=[];
       state: {
       catId: cat_id,
       subcatId:subcat_id
-
       }
-
     };
      this.nav.go('/productlist', navigationExtras);
   }
-
-
 }

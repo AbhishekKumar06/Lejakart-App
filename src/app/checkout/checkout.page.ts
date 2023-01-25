@@ -37,7 +37,6 @@ export class CheckoutPage implements OnInit {
   ngOnInit() {
     this.Get_Address();
     this.Price_Summary();
-
   }
 
   async menu(add_id) {
@@ -54,7 +53,6 @@ export class CheckoutPage implements OnInit {
     return await popover.present();
   }
   Check(event) {
-
     console.log(event);
     if (event.detail.value) {
       this.Method = true;
@@ -116,16 +114,13 @@ export class CheckoutPage implements OnInit {
       console.log(resp);
       if (resp.status == "success") {
         this.Price = resp.data;
-
       }
     });
   }
   SelectPayment() {
     console.log(this.Paymentmethod);
-
   }
   PlaceOrder() {
-
     let base = this;
     if (base.DeliveryMethod == '') {
       base.helper.presentToast('please select Delivery Method')
@@ -133,12 +128,8 @@ export class CheckoutPage implements OnInit {
     else if (base.DeliveryMethod == 'delivery_at_address' && base.SelectAddress == '') {
       base.helper.presentToast('please select Address');
     }
-
-
-
     else if (base.Paymentmethod == '') {
       base.helper.presentToast('Please Select Payment Method');
-
     } else {
       if (base.Paymentmethod == 'COD') {
         base.helper.showLoading();
@@ -154,7 +145,6 @@ export class CheckoutPage implements OnInit {
             this.router.navigate(['/orderlist']);
             base.helper.SuccessToast(resp.msg);
             console.log(base.DeliveryMethod);
-
           } else {
             base.helper.hideLoading();
             base.helper.presentToast(resp.msg.delivery_address_id);
@@ -190,9 +180,6 @@ export class CheckoutPage implements OnInit {
         options.handler = ((response, error) => {
           console.log(response);
           console.log(response.razorpay_payment_id);
-
-
-
           console.log("option", options);
           base.helper.showLoading();
           base.api.post(endpoints.Place_Order(), {

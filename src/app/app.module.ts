@@ -12,6 +12,8 @@ import { InterceptorService } from './service/interceptor.service';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import{IonicRatingModule} from 'ionic-rating';
+import { GooglePlus } from '@awesome-cordova-plugins/google-plus/ngx';
+
 
 
 
@@ -23,6 +25,7 @@ import{IonicRatingModule} from 'ionic-rating';
     ApiserviceService,
     NativeGeocoder,
     Geolocation,
+    GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },IonicRatingModule
   ],

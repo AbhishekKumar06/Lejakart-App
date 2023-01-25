@@ -16,8 +16,8 @@ export class ProfilePage implements OnInit {
   constructor(public api: ApiserviceService) { }
 
   ngOnInit() {
-    this.api.name = localStorage.getItem("name");
-    console.log("name===>", this.api.name);
+    console.log("User_name",this.api.name);
+    
   }
 
   checkPlatform() {
@@ -43,8 +43,5 @@ export class ProfilePage implements OnInit {
       this.selectedImage.webPath = image.dataUrl;
       console.log("image=====>", this.selectedImage.webPath);
     }
-
-
   }
-
 }

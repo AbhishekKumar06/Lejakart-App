@@ -11,6 +11,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
 import { Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
 import { Location } from '@angular/common';
+import { GooglePlus } from '@awesome-cordova-plugins/google-plus/ngx';
 
 // import { Geolocation } from '@capacitor/geolocation';
 
@@ -25,7 +26,7 @@ import { Location } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  public currentPage:any;
+  public currentPage: any;
   public appPages = [
     {
       title: 'Home',
@@ -70,54 +71,49 @@ export class AppComponent implements OnInit {
     private popoverController: PopoverController,
     public platform: Platform,
     public location: Location,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public googleplus: GooglePlus
   ) {
     this.initializeApp();
     this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
         console.log(e.url);
         this.currentPage = e.url;
-
-
-
       }
     });
   }
 
   ngOnInit() {
-
     this.api.name;
     console.log("name", this.api.name);
   }
 
   initializeApp() {
-    this.platform.ready().then(async() => {
-     await  SplashScreen.show({
+    this.platform.ready().then(async () => {
+      await SplashScreen.show({
         showDuration: 2000,
         autoHide: true,
       });
-
     });
 
     setTimeout(() => {
-
       App.addListener('backButton', () => {
         console.log(this.currentPage);
-        if(this.currentPage == '/'){
+        if (this.currentPage == '/') {
           this.confirmExitApp();
         }
-       else if(this.currentPage == '/tabs/home' ){
-         App.exitApp();
+        else if (this.currentPage == '/tabs/home') {
+          App.exitApp();
         }
-        else if(this.currentPage == '/login' ){
-           this.confirmExitApp();
-          }
-          else if (this.currentPage == '/checkout'){
-           this.nav.go('/tabs/home');
-          }
-          else{
-            window.history.back();
-          }
+        else if (this.currentPage == '/login') {
+          this.confirmExitApp();
+        }
+        else if (this.currentPage == '/checkout') {
+          this.nav.go('/tabs/home');
+        }
+        else {
+          window.history.back();
+        }
       });
 
     }, 1000);
@@ -132,11 +128,11 @@ export class AppComponent implements OnInit {
       console.log(resp);
       if (resp) {
         localStorage.removeItem('User_Id');
+        this.api.name = '';
+        this.api.email = '';
       }
     });
-
   }
-
   async confirmExitApp() {
     const alert = await this.alertCtrl.create({
       header: 'Confirmation Exit',
@@ -153,7 +149,20 @@ export class AppComponent implements OnInit {
         }
       }]
     });
-
     await alert.present();
+  }
+
+  signout() {
+    if (this.api.Google_userid) {
+      this.googleplus.logout().then((resp) => {
+        console.log("resp", resp);
+        if (resp) {
+          localStorage.removeItem('Google_UserId');
+          this.api.Google_name = '';
+          this.api.Google_email = '';
+          this.router.navigate(['login']);
+        }
+      });
+    }
   }
 }

@@ -16,6 +16,9 @@ export class ApiserviceService {
   store_id:any='';
   product_id:any='';
   image:any='';
+  Google_userid:any='';
+  Google_email:any='';
+  Google_name:any='';
  
 
   constructor(public http: HttpClient) { }

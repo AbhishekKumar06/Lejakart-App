@@ -7,6 +7,7 @@ import { ApiserviceService } from '../service/apiservice.service';
 import { endpoints } from '../common/endpoint';
 import { NavigationExtras } from '@angular/router';
 import { NavigationService } from '../service/navigation.service';
+import { AddaddressPage } from '../addaddress/addaddress.page';
 
 @Component({
   selector: 'app-accountsettings',
@@ -15,6 +16,8 @@ import { NavigationService } from '../service/navigation.service';
 })
 export class AccountsettingsPage implements OnInit {
   AccountDetail: any = {};
+  Address: any = [];
+  point = false;
 
   constructor(public router: Router,
     public modalController: ModalController,
@@ -24,6 +27,17 @@ export class AccountsettingsPage implements OnInit {
 
   ngOnInit() {
     this.AccountInfo();
+     this.Get_Address();
+  }
+
+  radiochecked(event) {
+    console.log(event);
+    console.log(event.detail.value);
+    if (event.detail.value) {
+      this.point = true;
+    } else {
+      this.point = false;
+    }
   }
 
   async presentModal() {
@@ -56,6 +70,51 @@ export class AccountsettingsPage implements OnInit {
       }
     });
 
+  }
+
+  async Add_Address() {
+    const modal = await this.modalController.create({
+      component: AddaddressPage,
+      cssClass: 'add-address-popup'
+    });
+    modal.onDidDismiss().then((data) => {
+      console.log(data);
+      this.Get_Address();
+    });
+    return await modal.present();
+  }
+ 
+  Get_Address() {
+    // this.helper.showLoading();
+    this.api.get(endpoints.Get_Delivery_Address()).subscribe((resp: any) => {
+      console.log(resp);
+      if (resp.status == 'success') {
+        this.Address = resp.data.delivery_address;
+        this.helper.hideLoading();
+      } else {
+        this.helper.hideLoading();
+      }
+
+    }, error => {
+      console.log("error",error);
+      
+      this.helper.hideLoading();
+    });
+  }
+  Del_Add(del_id) {
+    this.helper.showLoading();
+    this.api.get(endpoints.Delete_address(del_id)).subscribe((resp: any) => {
+      console.log(resp);
+      if (resp.status == 'success') {
+        this.Get_Address();
+        this.helper.hideLoading();
+      } else {
+        this.helper.hideLoading();
+      }
+    },error=>{
+      console.log("error",error);
+      this.helper.hideLoading();   
+    });
   }
 
 

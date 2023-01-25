@@ -1,0 +1,48 @@
+{
+  "project_info": {
+
+    "project_number": "390736558591",
+    "project_id": "login-b928c",
+    "storage_bucket": "login-b928c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390736558591:android:c13edd8fea72018f624fca",
+        "android_client_info": {
+          "package_name": "com.customer.lejakart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390736558591-dhnjd7omdqb4ukqhe1aiu7900mvj00d9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.customer.lejakart",
+            "certificate_hash": "86a458694954e45b6b71dc78733e36db6b7f05cf"
+          }
+        },
+        {
+          "client_id": "390736558591-g9uptdm7kdgbog3q29pkjckpm27bdvtg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhsyrqqNd-EP6LU51wifRTUe0ueNicDVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390736558591-g9uptdm7kdgbog3q29pkjckpm27bdvtg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

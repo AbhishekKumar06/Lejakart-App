@@ -4,4 +4,5 @@
     <string name="title_activity_main">Lejakart</string>
     <string name="package_name">com.customer.lejakart</string>
     <string name="custom_url_scheme">com.customer.lejakart</string>
+    <string name="server_client_id">390736558591-dhnjd7omdqb4ukqhe1aiu7900mvj00d9.apps.googleusercontent.com</string>
 </resources>
